@@ -15,6 +15,7 @@ void enq(double  data) {
 }
 
 double deq() {
+  
 	double val = -1;
 	if (_rear == _front){
 		printf("Error: Queue is empty. Nothing to return\n");
@@ -23,8 +24,8 @@ double deq() {
 		val = _queue[_rear];
 		_rear = (_rear + 1) % MAX_Q_SIZE;
 	}
-
 	return val;
+ 
 }
 
 /* This section is for the function pointers exercise */
@@ -58,16 +59,22 @@ double reduce() {
     return _res;
 }
 
-/* Implement flex_reduce here:
 
-double flex_reduce(clear, op){
+
+double flex_reduce(void (*clear)(), void (*op)(double)){
     // clear(); // Clear _res to either 0 or 1
 	// for every element in queue:
 		//Call op with element.
+    clear();
+    int ndx = _rear;
+    while(ndx != _front) {
+      op(_queue[ndx]);
+      ndx = (ndx + 1) % MAX_Q_SIZE;
+    }
 
 	return _res;
 
 }
 
-*/
+
 
