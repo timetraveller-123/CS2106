@@ -9,9 +9,10 @@ typedef struct {
 
 TPerson *makeNewNode(char *name, int age) {
     TPerson *p = (TPerson *) malloc(sizeof(TPerson));
+    p->name = (char *) malloc(strlen(name) + 1);
     strcpy(p->name, name);
     p->age = age;
-
+   
     return p;
 }
 
@@ -38,6 +39,7 @@ int main() {
     printf("\nDELETING PERSONS\n");
     for(i=0; i<NUM_PERSONS; i++) {
         printf("Deleting %s aged %d\n", list[i]->name, list[i]->age);
+        free(list[i]->name);
         freeNode(list[i]);
     }
 }
