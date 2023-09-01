@@ -17,6 +17,7 @@ TPerson *makeNewNode(char *name, int age) {
 }
 
 void freeNode(TPerson *node) {
+    free(node->name);
     free(node);
 }
 
@@ -39,7 +40,6 @@ int main() {
     printf("\nDELETING PERSONS\n");
     for(i=0; i<NUM_PERSONS; i++) {
         printf("Deleting %s aged %d\n", list[i]->name, list[i]->age);
-        free(list[i]->name);
         freeNode(list[i]);
     }
 }
