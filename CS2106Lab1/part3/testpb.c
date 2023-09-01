@@ -42,13 +42,22 @@ int main() {
 
     printf("\nPrinting entire phonebook.\n");
     print_phonebook();
-
+    /*
     printf("\nDeleting Jean Valjean.\n");
     delPerson("Jean Valjean");
     print_phonebook();
 
     printf("\nDeleting Fred Astaire.\n");
     delPerson("Fred Astaire");
+    print_phonebook();
+    */
+
+    printf("\nDeleting Aiken Dueet.\n");
+    delPerson("Aiken Dueet");
+    print_phonebook();
+
+    printf("\nDeleting Victor Hugo. \n");
+    delPerson("Victor Hugo");
     print_phonebook();
 
     printf("\nDeleting entire phone book.\n");

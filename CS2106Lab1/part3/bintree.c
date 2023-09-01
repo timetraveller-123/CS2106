@@ -86,11 +86,12 @@ void delNode(TTreeNode *node, TTreeNode *prevnode) {
     // This has a child on the left only
     if(node->right == NULL) {
         // Copy the right child over
-        /*
+        ///*
         node = node->left;
         freenode(node->left);
         return;
-        */
+        //*/
+        /*
         TTreeNode tempnode = *node;
         strcpy(node->name, node->left->name);
         strcpy(node->phoneNum, node->left->phoneNum);
@@ -98,16 +99,18 @@ void delNode(TTreeNode *node, TTreeNode *prevnode) {
         node->left = node->left->left;
         freenode(tempnode.left);
         return;
+        */
 
     }
 
     // This has a child on the right only
     if(node->left == NULL) {
-      /*
+      ///*
         node = node->right;
         freenode(node->right);
         return;
-        */
+        //*/
+        /*
         TTreeNode tempnode = *node;
          strcpy(node->name, node->right->name);
         strcpy(node->phoneNum, node->right->phoneNum);
@@ -116,16 +119,18 @@ void delNode(TTreeNode *node, TTreeNode *prevnode) {
 
         freenode(tempnode.right);
         return;
+        */
     }
 
     // This has children on both nodes
     TTreeNode *smallest, *smallest_parent;
     findSmallest(node->right, &smallest, &smallest_parent);
-    /*
+    ///*
     node = smallest;
     smallest_parent->left = NULL;
     freenode(smallest);
-    */
+   // */
+    /*
     TTreeNode tempnode = *node;
     strcpy(node->name, smallest->name);
     strcpy(node->phoneNum, smallest->phoneNum);
@@ -140,6 +145,7 @@ void delNode(TTreeNode *node, TTreeNode *prevnode) {
       freenode(smallest);
       return;
     }
+    */
 
 }
 
