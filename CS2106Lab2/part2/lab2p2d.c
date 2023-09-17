@@ -11,7 +11,7 @@ int main() {
     if(fork() == 0) {
         dup2(fp_in, STDIN_FILENO);
         dup2(fp_out, STDOUT_FILENO);
-        execlp("./talk", "talk", (char *) 0);
+        execlp("./talk", "talk", NULL);
         close(fp_in);
         close(fp_out);
     }

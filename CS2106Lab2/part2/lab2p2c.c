@@ -4,7 +4,8 @@
 
 int main() {
     if(fork() ==  0) {
-        execlp("cat", "cat", "file.txt", NULL);
+        char *a[] = {"cat", "file.txt", NULL};
+        execvp("cat", a);
     }
     else
         wait(NULL);
