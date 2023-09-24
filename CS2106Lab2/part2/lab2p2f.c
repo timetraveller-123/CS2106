@@ -29,11 +29,10 @@ int main() {
         dup2(p[1], STDOUT_FILENO);
         execlp("./slow", "slow", "5", NULL);
       
-      }
-      wait(NULL);
+      }else 
+        close(p[1]);
       
-      
-    } else {
+      } else {
       close(p[1]);
       dup2(p[0], STDIN_FILENO);
       int fp = open("./results.out", O_CREAT | O_WRONLY);
@@ -41,7 +40,10 @@ int main() {
       execlp("./talk", "talk", NULL);
 
     }
+
+    wait(NULL);
     
+
     
 
 

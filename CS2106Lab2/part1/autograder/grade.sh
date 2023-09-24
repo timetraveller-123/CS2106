@@ -6,6 +6,9 @@ if [[ $# -ne 1 ]]; then
   exit
 fi
 
+rm -rf results.out
+echo -e "Test date and time: $(date +%A), $(date +%d) $(date +%B) $(date +%Y), $(date +%X).\n" >> results.out
+
 # Delete temporary files
 rm  -f ref/*.out
 for i in ref/*; do
@@ -27,8 +30,10 @@ for i in ref/*.in; do
 done
 # Now mark submissions
 
-rm -f results.out
+
+numfiles=0
 for i in subs/*; do
+  numfiles=$((numfiles+1))
   var=$(basename $i)
   rm -f $i/compileError
   rm -f $i/*.out
@@ -58,6 +63,8 @@ for i in subs/*; do
   done
   echo "Directory $var score $score/$count" >> results.out
 done
+
+echo -e "\nProcessed $numfiles files." >> results.out
 
 
 
