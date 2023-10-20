@@ -68,6 +68,8 @@ int main() {
         largest[i] = big;
         smallest[i] = small;
         reach_barrier();
+        shmdt(largest);
+        shmdt(smallest);
 
     }
     else 
@@ -88,15 +90,19 @@ int main() {
         end = clock();
         time_taken = ((double) end - start) / CLOCKS_PER_SEC;
 
-        for(int j = 0; j<NUM_PROCESSES;j++)
-          wait(NULL);
-
         printf("\nNumber of items: %d\n", VECT_SIZE);
         printf("Smallest element is %d\n", small);
         printf("Largest element is %d\n", big);
         printf("Time taken is %3.2fs\n\n", time_taken);
 
         // Clean up process table
+        for(int j = 0; j < NUM_PROCESSES; j++) {
+          wait(NULL);
+        }
+        shmdt(largest);
+        shmdt(smallest);
+        shmctl(shmid1, IPC_RMID, NULL);
+        shmctl(shmid2, IPC_RMID, NULL);
         
     }
 }
